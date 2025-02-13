@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="commons/all_head_links :: head">
 </head>
 <body>
@@ -7,60 +7,64 @@
 <!--Navbar-->
 <div th:replace="header :: nav"/>
 
+<div class="container">
 
-<h2>Employee Form</h2>
+    <h1 class="mx-auto text-center py-5 w-50">Welcome to SPRK TECH Employee Management System</h1>
 
-<form>
-    <table>
-        <tr>
-            <td><label for="firstName">First Name:</label></td>
-            <td>
-                <input type="text" id="firstName" />
-            </td>
-        </tr>
-        <tr>
-            <td><label for="lastName">Last Name:</label></td>
-            <td>
-                <input type="text" id="lastName" />
-            </td>
-        </tr>
-        <tr>
-            <td><label for="email">Email:</label></td>
-            <td>
-                <input type="email" id="email" />
-            </td>
-        </tr>
-        <tr>
-            <td><label for="gender">Gender:</label></td>
-            <td>
-                <select id="gender">
-                    <option value="" disabled selected>--Select--</option>
-                    <option value="Male">Male</option>
-                    <option value="Female">Female</option>
-                    <option value="Other">Other</option>
-                </select>
-            </td>
-        </tr>
-        <tr>
-            <td><label for="address">Address:</label></td>
-            <td>
-                <textarea id="address"  rows="3" cols="30"></textarea>
-            </td>
-        </tr>
-        <tr>
-            <td><label for="phone">Phone:</label></td>
-            <td>
-                <input type="text" id="phone"  />
-            </td>
-        </tr>
-        <tr>
-            <td colspan="2">
-                <button type="submit">Submit</button>
-            </td>
-        </tr>
-    </table>
-</form>
+    <form class="row g-5 justify-content-center mb-5" th:object="${employee}" method="post" th:action="@{/employee}">
+        <div class="col-md-5">
+            <label for="inputFirstName" class="form-label">First Name</label>
+            <input type="text" class="form-control" id="inputFirstName" placeholder="John" th:field="*{firstName}">
+            <div class="text-danger" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">
 
+            </div>
+        </div>
+        <div class="col-md-5">
+            <label for="inputLastName" class="form-label">Last Name</label>
+            <input type="text" class="form-control" id="inputLastName" placeholder="Doe" th:field="*{lastName}">
+            <div class="text-danger" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}">
+
+            </div>
+        </div>
+
+        <div class="col-md-5">
+            <label for="inputEmail" class="form-label">Email</label>
+            <input type="text" class="form-control" id="inputEmail" placeholder="john123@gmail.com" th:field="*{email}">
+            <div class="text-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">
+
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <label for="inputPhone" class="form-label">Phone</label>
+            <input type="text" class="form-control" id="inputPhone" placeholder="8757845858" th:field="*{phone}">
+            <div class="text-danger" th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}">
+
+            </div>
+        </div>
+
+        <div class="col-md-2">
+            <label for="inputGender" class="form-label">Gender</label>
+            <select id="inputGender" class="form-select" th:field="*{gender}">
+                <option selected value="Choose Gender">Choose Gender...</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Others">Others</option>
+            </select>
+        </div>
+        <div class="col-10">
+            <label for="inputAddress" class="form-label">Address</label>
+            <textarea class="form-control" id="inputAddress" name="address" placeholder="1234 Main St" th:field="*{address}"></textarea>
+            <div class="text-danger" th:if="${#fields.hasErrors('address')}" th:errors="*{address}">
+
+            </div>
+        </div>
+
+        <div class="col-10">
+            <button type="submit" class="btn btn-primary">Save Employee</button>
+        </div>
+    </form>
+</div>
 <th:block th:replace="commons/all_js_links::div"></th:block>
 </body>
 </html>

@@ -34,7 +34,7 @@ public class Employee {
     @Email(message = "Email should be valid")
     private String email;
 
-    @NotBlank(message = "Gender is required")
+
     private String gender;
 
     @NotBlank(message = "Address is required")
