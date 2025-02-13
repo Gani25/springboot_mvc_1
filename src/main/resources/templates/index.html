@@ -1,17 +1,32 @@
 <!DOCTYPE html>
 
 <html lang="en"  xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Home Page</title>
-
-    <link rel="stylesheet" th:href="@{/css/style.css}">
+<head th:replace="commons/all_head_links :: head">
 </head>
 <body>
 
-<h1>Hello All</h1>
-<h3>Time on server is: <span th:text="${todaysDate}"></span> </h3>
 
-<h3>Time on server without span <th:block th:text="${todaysDate}"></th:block> </h3>
+<!--Replace below div with nav bar-->
+<div th:replace="header :: nav"/>
+
+<div class="container">
+
+
+
+    <h1 class="text-center my-5">Welcome to Home</h1>
+
+
+    <div class="d-flex justify-content-center gap-5">
+
+
+        <a type="button" class="btn btn-lg btn-secondary" href="form.html">Add Employee</a>
+        <a type="button" class="btn btn-lg btn-secondary" href="list.html">List Employees</a>
+
+
+    </div>
+
+</div>
+
+<th:block th:replace="commons/all_js_links::div"></th:block>
 </body>
 </html>
