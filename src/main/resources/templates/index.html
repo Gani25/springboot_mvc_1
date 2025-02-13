@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Home Page</title>
+
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+<h1>Hello All</h1>
+<h3>Time on server is: <span th:text="${todaysDate}"></span> </h3>
+
+<h3>Time on server without span <th:block th:text="${todaysDate}"></th:block> </h3>
+</body>
+</html>
