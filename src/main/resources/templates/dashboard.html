@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="commons/all_head_links :: head">
+</head>
+<body>
+
+<!--Navbar-->
+<div th:replace="header :: nav"/>
+
+<div class="container">
+
+    <h1 class="mx-auto text-center my-5 w-50">Welcome to SPRK TECH Employee Management System</h1>
+
+    <div class="alert alert-success w-50 mx-auto text-center" role="alert" th:if="${successMessage}"
+         th:text="${successMessage}">
+        Employee Saved Successfully!
+    </div>
+    <!-- Display Message -->
+
+    <table class="table table-bordered table-hover mx-auto mt-5">
+        <thead>
+        <tr class="table-dark">
+            <th scope="col">Emp Id</th>
+            <th scope="col">First Name</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">Gender</th>
+            <th scope="col">Email</th>
+            <th scope="col">Phone</th>
+            <th scope="col">Address</th>
+            <th scope="col">Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="tempEmployee:${employees}" >
+            <td th:text="${tempEmployee.id}" class="py-3"></td>
+            <td th:text="${tempEmployee.firstName}" class="py-3"></td>
+            <td th:text="${tempEmployee.lastName}" class="py-3"></td>
+            <td th:text="${tempEmployee.gender}" class="py-3"></td>
+            <td th:text="${tempEmployee.email}" class="py-3"></td>
+            <td th:text="${tempEmployee.phone}" class="py-3"></td>
+            <td th:text="${tempEmployee.address}" class="py-3"></td>
+            <td class="py-3">
+                <a class="btn btn-sm btn-outline-dark"><i class="fa-solid fa-pen"></i> Update</a> |
+                <a class="btn btn-sm btn-outline-danger"><i class="fa-solid fa-trash"></i> Delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<th:block th:replace="commons/all_js_links::div"></th:block>
+</body>
+</html>
