@@ -9,4 +9,8 @@ public interface EmployeeService {
     boolean saveEmployee(Employee employee);
 
     List<Employee> getAllEmployees();
+
+    String deleteEmployeeById(String empId);
+
+    Employee getEmployeeById(Long empId);
 }
